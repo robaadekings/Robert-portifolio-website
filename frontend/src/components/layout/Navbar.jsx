@@ -13,7 +13,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold">
-          Murungi.dev
+          Murangiri Robert Murungi
         </Link>
 
         <div className="flex gap-6 items-center">
