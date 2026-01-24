@@ -8,6 +8,7 @@ import ProtectedRoute from "@/components/ProtectedRoute"
 // Pages
 import Home from "@/pages/Home"
 import About from "@/pages/About"
+import Services from "@/pages/Services"
 import Projects from "@/pages/Projects"
 import ProjectDetails from "@/pages/ProjectDetails"
 import Contact from "@/pages/Contact"
@@ -32,6 +33,7 @@ function App() {
           {/* Public */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/contact" element={<Contact />} />
