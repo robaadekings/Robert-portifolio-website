@@ -16,7 +16,7 @@ import Login from "@/pages/Login"
 // Admin
 import Dashboard from "@/admin/Dashboard"
 import AddProject from "@/admin/AddProject"
-import ManageProjects from "@/admin/ManageProjects"
+import ManageProjects from "@/admin/ManageProject"
 import EditProject from "@/admin/EditProject"
 import Messages from "@/admin/Messages"
 
