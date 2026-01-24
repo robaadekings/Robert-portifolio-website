@@ -1,12 +1,15 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import ThemeToggle from "@/components/ThemeToggle"
-import { Menu, X } from "lucide-react"
+import { useAuth } from "@/context/AuthContext"
+import { Menu, X, LogOut, Lock } from "lucide-react"
 import { useState } from "react"
 
 const Navbar = () => {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { user, logout } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navLinks = [
@@ -17,6 +20,11 @@ const Navbar = () => {
   ]
 
   const isActive = (path) => location.pathname === path
+
+  const handleLogout = () => {
+    logout()
+    navigate("/")
+  }
 
   return (
     <motion.nav
@@ -56,6 +64,30 @@ const Navbar = () => {
                 Contact
               </Button>
             </Link>
+            
+            {/* Admin Login/Logout */}
+            {user ? (
+              <>
+                <Link to="/admin">
+                  <Button size="sm" variant="outline" className="gap-2">
+                    <Lock className="w-4 h-4" />
+                    Admin
+                  </Button>
+                </Link>
+                <Button size="sm" variant="ghost" onClick={handleLogout} className="gap-2">
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Link to="/login">
+                <Button size="sm" variant="outline" className="gap-2">
+                  <Lock className="w-4 h-4" />
+                  Admin
+                </Button>
+              </Link>
+            )}
+            
             <ThemeToggle />
           </div>
 
@@ -93,6 +125,33 @@ const Navbar = () => {
                 Contact
               </Button>
             </Link>
+            
+            {/* Admin Login/Logout Mobile */}
+            {user ? (
+              <>
+                <Link to="/admin" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full gap-2">
+                    <Lock className="w-4 h-4" />
+                    Admin Dashboard
+                  </Button>
+                </Link>
+                <Button variant="ghost" className="w-full gap-2" onClick={() => {
+                  handleLogout()
+                  setMobileMenuOpen(false)
+                }}>
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="outline" className="w-full gap-2">
+                  <Lock className="w-4 h-4" />
+                  Admin Login
+                </Button>
+              </Link>
+            )}
+            
             <div className="flex justify-center pt-2">
               <ThemeToggle />
             </div>
