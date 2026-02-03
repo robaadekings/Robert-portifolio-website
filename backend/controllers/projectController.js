@@ -4,6 +4,8 @@ const fs = require("fs");
 
 const uploadToCloudinary = async (files) => {
   const urls = [];
+  if (!files || files.length === 0) return urls;
+
   for (const file of files) {
     const result = await cloudinary.uploader.upload(file.path, {
       folder: "portfolio-projects",
@@ -24,13 +26,16 @@ exports.createProject = async (req, res) => {
   try {
     const imageUrls = await uploadToCloudinary(req.files);
 
-    const project = await Project.create({
+    const projectData = {
       ...req.body,
       images: imageUrls,
-    });
+    };
+
+    const project = await Project.create(projectData);
 
     res.status(201).json(project);
   } catch (error) {
+    console.error("Create project error:", error);
     res.status(500).json({ message: error.message });
   }
 };
