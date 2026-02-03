@@ -18,8 +18,8 @@ const EditProject = () => {
     title: "",
     description: "",
     techStack: "",
-    liveLink: "",
-    githubLink: "",
+    liveUrl: "",
+    githubUrl: "",
   })
   const [currentImages, setCurrentImages] = useState([])
 
@@ -34,8 +34,8 @@ const EditProject = () => {
         title: data.title,
         description: data.description,
         techStack: data.techStack.join(", "),
-        liveLink: data.liveLink || "",
-        githubLink: data.githubLink || "",
+        liveUrl: data.liveUrl || "",
+        githubUrl: data.githubUrl || "",
       })
       setCurrentImages(data.images || [])
     } catch (error) {
@@ -171,8 +171,8 @@ const EditProject = () => {
                   <label className="text-sm font-medium mb-2 block">Live Demo Link</label>
                   <Input
                     placeholder="https://example.com"
-                    value={form.liveLink}
-                    onChange={(e) => setForm({ ...form, liveLink: e.target.value })}
+                    value={form.liveUrl}
+                    onChange={(e) => setForm({ ...form, liveUrl: e.target.value })}
                     className="border-2"
                   />
                 </div>
@@ -180,8 +180,8 @@ const EditProject = () => {
                   <label className="text-sm font-medium mb-2 block">GitHub Link</label>
                   <Input
                     placeholder="https://github.com/username/repo"
-                    value={form.githubLink}
-                    onChange={(e) => setForm({ ...form, githubLink: e.target.value })}
+                    value={form.githubUrl}
+                    onChange={(e) => setForm({ ...form, githubUrl: e.target.value })}
                     className="border-2"
                   />
                 </div>

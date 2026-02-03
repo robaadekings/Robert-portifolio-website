@@ -81,9 +81,9 @@ const Projects = () => {
                       className="h-56 w-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 gap-2">
-                      {project.liveLink && (
+                      {project.liveUrl && (
                         <a
-                          href={project.liveLink}
+                          href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
@@ -94,9 +94,9 @@ const Projects = () => {
                           </Button>
                         </a>
                       )}
-                      {project.githubLink && (
+                      {project.githubUrl && (
                         <a
-                          href={project.githubLink}
+                          href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}

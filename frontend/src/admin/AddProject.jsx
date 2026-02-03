@@ -17,8 +17,8 @@ const AddProject = () => {
     title: "",
     description: "",
     techStack: "",
-    liveLink: "",
-    githubLink: "",
+    liveUrl: "",
+    githubUrl: "",
     images: [],
   })
   const [previewImages, setPreviewImages] = useState([])
@@ -41,8 +41,8 @@ const AddProject = () => {
       data.append("title", form.title)
       data.append("description", form.description)
       data.append("techStack", form.techStack)
-      data.append("liveLink", form.liveLink)
-      data.append("githubLink", form.githubLink)
+      data.append("liveUrl", form.liveUrl)
+      data.append("githubUrl", form.githubUrl)
 
       for (let img of form.images) {
         data.append("images", img)
@@ -150,8 +150,8 @@ const AddProject = () => {
                   <label className="text-sm font-medium mb-2 block">Live Demo Link</label>
                   <Input
                     placeholder="https://example.com"
-                    value={form.liveLink}
-                    onChange={(e) => setForm({ ...form, liveLink: e.target.value })}
+                    value={form.liveUrl}
+                    onChange={(e) => setForm({ ...form, liveUrl: e.target.value })}
                     className="border-2"
                   />
                 </div>
@@ -159,8 +159,8 @@ const AddProject = () => {
                   <label className="text-sm font-medium mb-2 block">GitHub Link</label>
                   <Input
                     placeholder="https://github.com/username/repo"
-                    value={form.githubLink}
-                    onChange={(e) => setForm({ ...form, githubLink: e.target.value })}
+                    value={form.githubUrl}
+                    onChange={(e) => setForm({ ...form, githubUrl: e.target.value })}
                     className="border-2"
                   />
                 </div>

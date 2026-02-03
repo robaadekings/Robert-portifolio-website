@@ -137,11 +137,18 @@ const ProjectDetails = () => {
                 <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
                 
                 {project.createdAt && (
-                  <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                    <Calendar className="w-4 h-4" />
-                    <span className="text-sm">
-                      {new Date(project.createdAt).toLocaleDateString()}
-                    </span>
+                  <div className="flex items-center gap-4 text-muted-foreground mb-4 flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span className="text-sm">
+                        Created: {new Date(project.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      </span>
+                    </div>
+                    {project.featured && (
+                      <div className="px-3 py-1 rounded-full bg-yellow-500/20 border border-yellow-500/50">
+                        <span className="text-xs font-semibold text-yellow-500">⭐ Featured</span>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -149,9 +156,9 @@ const ProjectDetails = () => {
               {/* Description */}
               <Card className="border-2">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-3">About This Project</h3>
+                  <h3 className="text-lg font-semibold mb-3">Project Description</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    {project.description}
+                    {project.description || "No description provided"}
                   </p>
                 </CardContent>
               </Card>
@@ -161,24 +168,70 @@ const ProjectDetails = () => {
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold mb-4">Technologies Used</h3>
                   <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-sm px-3 py-1">
-                        {tech}
-                      </Badge>
-                    ))}
+                    {project.techStack && project.techStack.length > 0 ? (
+                      project.techStack.map((tech) => (
+                        <Badge key={tech} variant="secondary" className="text-sm px-3 py-1">
+                          {tech}
+                        </Badge>
+                      ))
+                    ) : (
+                      <p className="text-muted-foreground text-sm">No technologies specified</p>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Links Section */}
+              <Card className="border-2">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-4">Project Links</h3>
+                  <div className="space-y-3">
+                    {project.liveUrl ? (
+                      <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
+                        <div>
+                          <p className="text-sm font-medium">Live Demo</p>
+                          <p className="text-xs text-muted-foreground truncate">{project.liveUrl}</p>
+                        </div>
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="ml-2">
+                          <Button size="sm" variant="secondary" className="gap-2">
+                            <ExternalLink className="w-4 h-4" />
+                            Visit
+                          </Button>
+                        </a>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">No live demo URL</p>
+                    )}
+                    
+                    {project.githubUrl ? (
+                      <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
+                        <div>
+                          <p className="text-sm font-medium">GitHub Repository</p>
+                          <p className="text-xs text-muted-foreground truncate">{project.githubUrl}</p>
+                        </div>
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="ml-2">
+                          <Button size="sm" variant="secondary" className="gap-2">
+                            <Github className="w-4 h-4" />
+                            View Code
+                          </Button>
+                        </a>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">No GitHub URL</p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
-                {project.liveLink && (
+                {project.liveUrl && (
                   <Button
                     asChild
                     className="flex-1 bg-gradient-to-r from-primary to-secondary hover:opacity-90"
                   >
                     <a
-                      href={project.liveLink}
+                      href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -187,14 +240,14 @@ const ProjectDetails = () => {
                     </a>
                   </Button>
                 )}
-                {project.githubLink && (
+                {project.githubUrl && (
                   <Button
                     asChild
                     variant="outline"
                     className="flex-1 border-2"
                   >
                     <a
-                      href={project.githubLink}
+                      href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
