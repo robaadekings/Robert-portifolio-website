@@ -1,8 +1,12 @@
 const Message = require("../models/Message");
 
 exports.sendMessage = async (req, res) => {
-  await Message.create(req.body);
-  res.status(201).json({ message: "Message sent" });
+  try {
+    const message = await Message.create(req.body);
+    res.status(201).json({ success: true, message: "Message sent successfully", data: message });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 exports.getMessages = async (req, res) => {

@@ -13,6 +13,7 @@ const Contact = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   })
   const [loading, setLoading] = useState(false)
@@ -26,7 +27,7 @@ const Contact = () => {
         title: "Message sent successfully!",
         description: "I'll get back to you as soon as possible."
       })
-      setForm({ name: "", email: "", message: "" })
+      setForm({ name: "", email: "", subject: "", message: "" })
     } catch (error) {
       toast({ 
         title: "Error sending message",
@@ -42,21 +43,21 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "your.email@example.com",
-      href: "mailto:your.email@example.com",
+      value: "robertmurangiri63@gmail.com",
+      href: "mailto:robertmurangiri63@gmail.com",
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+123 456 7890",
-      href: "tel:+1234567890",
+      value: "+254769505060",
+      href: "tel:+25476950506",
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Your City, Country",
+      value: "Meru, Kenya",
       href: "#",
       color: "from-green-500 to-emerald-500"
     }
@@ -140,7 +141,7 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-4">Connect With Me</h3>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/robaadekings"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 rounded-xl glass-effect border-2 hover:border-primary hover:bg-primary/10 transition-all group"
@@ -156,7 +157,7 @@ const Contact = () => {
                   <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:robertmurangiri63@gmail.com"
                   className="p-4 rounded-xl glass-effect border-2 hover:border-primary hover:bg-primary/10 transition-all group"
                 >
                   <Mail className="w-6 h-6 group-hover:scale-110 transition-transform" />
@@ -178,7 +179,7 @@ const Contact = () => {
                   <div>
                     <label className="text-sm font-medium mb-2 block">Your Name</label>
                     <Input
-                      placeholder="John Doe"
+                      placeholder="robert"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       required
@@ -189,9 +190,19 @@ const Contact = () => {
                     <label className="text-sm font-medium mb-2 block">Your Email</label>
                     <Input
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="robert@example.com"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      required
+                      className="border-2"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Subject</label>
+                    <Input
+                      placeholder="Project inquiry"
+                      value={form.subject}
+                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
                       required
                       className="border-2"
                     />

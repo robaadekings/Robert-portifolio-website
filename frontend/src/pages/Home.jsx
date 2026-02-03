@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Github, Linkedin, Mail, Download, Sparkles } from "lucide-react"
+import profileImage from "@/assets/profile.jpg"
 
 const Home = () => {
   return (
@@ -87,7 +88,7 @@ const Home = () => {
               className="flex gap-4 justify-center lg:justify-start pt-4"
             >
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/robaadekings"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl glass-effect border hover:border-primary hover:bg-primary/10 transition-all group"
@@ -105,7 +106,7 @@ const Home = () => {
                 <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:robertmurangiri63@gmail.com"
                 className="p-3 rounded-xl glass-effect border hover:border-primary hover:bg-primary/10 transition-all group"
                 aria-label="Email"
               >
@@ -119,54 +120,48 @@ const Home = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex justify-center lg:justify-end"
+            className="flex justify-center lg:justify-end items-center"
           >
-            <div className="relative">
-              {/* Animated Glow Ring */}
+            <div className="relative flex items-center justify-center w-96 h-96 md:w-[28rem] md:h-[28rem]">
+              {/* Main Animated Rotating Circle Border */}
               <motion.div
-                animate={{
-                  rotate: 360,
-                  scale: [1, 1.05, 1],
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: "conic-gradient(from 0deg, #00FFFF 0%, #00FF88 14%, #00D4FF 28%, #0088FF 42%, #9D4EDD 56%, #FF006E 70%, #FF4500 84%, #FFEA00 100%)",
+                  boxShadow: "0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(157, 78, 221, 0.5), inset 0 0 30px rgba(255, 69, 0, 0.4)",
                 }}
-                transition={{
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-secondary blur-2xl opacity-50"
               />
-              
-              {/* Inner Rotating Border */}
+
+              {/* Secondary Rotating Glow - Opposite Direction */}
               <motion.div
                 animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-secondary p-1"
-              >
-                <div className="w-full h-full rounded-full bg-background" />
-              </motion.div>
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: "conic-gradient(from 0deg, #FFEA00 0%, #FF4500 16%, #FF006E 32%, #9D4EDD 48%, #0088FF 64%, #00D4FF 80%, #00FF88 100%)",
+                  filter: "blur(15px)",
+                  opacity: 0.6,
+                  boxShadow: "0 0 40px rgba(255, 234, 0, 0.6), inset 0 0 30px rgba(0, 136, 255, 0.3)",
+                }}
+              />
 
-              {/* Profile Image Container */}
+              {/* Profile Image Container - Centered */}
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.08 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-background shadow-2xl"
+                className="absolute w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl z-10 flex items-center justify-center"
+                style={{
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  boxShadow: "0 0 30px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.1)",
+                }}
               >
-                {/* Placeholder - Replace with your actual profile image */}
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white text-6xl font-bold">
-                      R
-                    </div>
-                    <p className="text-sm text-muted-foreground">Add your profile image</p>
-                    <p className="text-xs text-muted-foreground mt-1">Replace in Home.jsx</p>
-                  </div>
-                </div>
-                {/* Uncomment and use this when you add your image:
                 <img
-                  src="/path-to-your-profile-image.jpg"
+                  src={profileImage}
                   alt="Robert Murungi"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center rounded-full"
                 />
-                */}
               </motion.div>
 
               {/* Floating Badges */}

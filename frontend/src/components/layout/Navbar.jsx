@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import ThemeToggle from "@/components/ThemeToggle"
 import { useAuth } from "@/context/AuthContext"
 import { Menu, X, LogOut, Lock } from "lucide-react"
 import { useState } from "react"
@@ -87,8 +86,6 @@ const Navbar = () => {
                 </Button>
               </Link>
             )}
-            
-            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
