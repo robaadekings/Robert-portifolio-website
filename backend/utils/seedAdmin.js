@@ -1,27 +1,9 @@
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const User = require("../models/User");
+// Seed script removed to prevent accidental admin creation.
+// Use the API endpoint POST /api/auth/register-admin to create the first admin.
+// Example (curl):
+// curl -X POST "$BACKEND_URL/api/auth/register-admin" \
+//   -H "Content-Type: application/json" \
+//   -d '{"name":"Your Name","email":"admin@example.com","password":"YourStrongPassword"}'
 
-dotenv.config();
-mongoose.connect(process.env.MONGO_URI);
-
-const seedAdmin = async () => {
-  const adminExists = await User.findOne({ role: "admin" });
-
-  if (adminExists) {
-    console.log("Admin already exists");
-    process.exit();
-  }
-
-  await User.create({
-    name: "Admin",
-    email: "admin@portfolio.com",
-    password: "admin123",
-    role: "admin",
-  });
-
-  console.log("Admin created");
-  process.exit();
-};
-
-seedAdmin();
+console.log("This seed script is intentionally disabled. Use POST /api/auth/register-admin to create the first admin.");
+process.exit(0);

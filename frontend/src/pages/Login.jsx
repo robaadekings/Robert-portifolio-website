@@ -167,6 +167,9 @@ const Login = () => {
                   <p className="text-xs text-muted-foreground mt-2">
                     Please change these credentials after first login
                   </p>
+                  <div className="mt-3 text-center">
+                    <Link to="/register-admin" className="text-sm text-primary hover:underline">Register as Admin</Link>
+                  </div>
                 </div>
               </div>
 

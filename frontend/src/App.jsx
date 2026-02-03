@@ -13,6 +13,7 @@ import Projects from "@/pages/Projects"
 import ProjectDetails from "@/pages/ProjectDetails"
 import Contact from "@/pages/Contact"
 import Login from "@/pages/Login"
+import RegisterAdmin from "@/pages/RegisterAdmin"
 
 // Admin
 import Dashboard from "@/admin/Dashboard"
@@ -38,6 +39,7 @@ function App() {
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register-admin" element={<RegisterAdmin />} />
 
           {/* Admin */}
           <Route
