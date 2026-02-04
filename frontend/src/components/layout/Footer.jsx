@@ -17,9 +17,9 @@ const Footer = () => {
       { label: "Contact", path: "/contact" }
     ],
     social: [
-      { icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
-      { icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-      { icon: Mail, href: "mailto:your.email@example.com", label: "Email" }
+      { icon: Github, href: "https://github.com/robaadekings", label: "GitHub" },
+      { icon: Linkedin, href: "https://linkedin.com/in/robert-murangiri-40ab24392", label: "LinkedIn" },
+      { icon: Mail, href: "mailto:robertmurangiri63@gmail.com", label: "Email" }
     ]
   }
 

@@ -97,7 +97,7 @@ const Home = () => {
                 <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/robert-murangiri-40ab24392"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl glass-effect border hover:border-primary hover:bg-primary/10 transition-all group"
