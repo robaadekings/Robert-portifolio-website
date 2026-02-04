@@ -38,12 +38,12 @@ const Home = () => {
               <span className="text-sm font-medium">Available for Freelance</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-              Hi, I'm{" "}
-              <span className="gradient-text">
-                Robert Murungi
-              </span>
-            </h1>
+            <motion.h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+              <AnimatedWords
+                words={["Hi,", "I'm", "Robert", "Murungi"]}
+                nameIndexes={[2, 3]}
+              />
+            </motion.h1>
             
             <div className="space-y-3">
               <p className="text-2xl md:text-3xl font-semibold text-foreground/90">
@@ -212,3 +212,34 @@ const Home = () => {
 }
 
 export default Home
+
+function AnimatedWords({ words = [], nameIndexes = [] }) {
+  // Each word will follow a gentle circular-like keyframe (x,y) path.
+  // Staggered delays make words follow each other.
+  return (
+    <span className="inline-flex flex-wrap gap-2 items-center">
+      {words.map((word, i) => {
+        const isName = nameIndexes.includes(i)
+        const delay = i * 0.12
+        return (
+          <motion.span
+            key={i}
+            className={`inline-block ${isName ? "gradient-text font-extrabold" : "text-foreground/95"}`}
+            animate={{
+              x: [0, 10, 20, 10, 0, -10, 0],
+              y: [0, -6, 0, 6, 0, -6, 0],
+            }}
+            transition={{
+              delay,
+              duration: 3.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            {word}
+          </motion.span>
+        )
+      })}
+    </span>
+  )
+}
