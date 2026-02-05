@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Github, Linkedin, Mail, Sparkles } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Mail, Download, Sparkles } from "lucide-react"
 import profileImage from "@/assets/profile.jpg"
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       transition={{ duration: 0.6 }}
       className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden"
     >
-      {/* Background */}
+      {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         <div className="hidden sm:block absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
         <div className="hidden sm:block absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
@@ -22,86 +22,158 @@ const Home = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-start flex-col lg:items-center">
           
-          {/* LEFT */}
+          {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="space-y-6 text-center lg:text-left w-full"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border"
+            >
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium">Available for Freelance</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
               <AnimatedWords
                 words={["Hi,", "I'm", "Robert", "Murungi"]}
                 nameIndexes={[2, 3]}
               />
-            </h1>
+            </motion.h1>
+            
+            <div className="space-y-3">
+              <p className="text-2xl md:text-3xl font-semibold text-foreground/90">
+                Fullstack MERN Developer
+              </p>
+              <p className="text-xl md:text-2xl font-semibold text-foreground/80">
+                & Graphic Designer
+              </p>
+            </div>
 
-            <p className="text-2xl font-semibold">Fullstack MERN Developer</p>
-            <p className="text-xl font-semibold text-muted-foreground">& Graphic Designer</p>
-
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
-              I craft beautiful, scalable web applications and stunning visual designs.
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              I craft beautiful, scalable web applications and create stunning
+              visual designs that bring ideas to life. Let's build something amazing together.
             </p>
           </motion.div>
 
-          {/* RIGHT */}
+          {/* Right Side - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex justify-center w-full"
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="flex justify-center lg:justify-end items-center w-full"
           >
-            <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl">
-              <img
-                src={profileImage}
-                alt="Robert Murungi"
-                className="w-full h-full object-cover"
+            <div className="relative flex items-center justify-center w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] p-3">
+              
+              {/* Main Animated Rotating Circle Border */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: "conic-gradient(from 0deg, #00FFFF 0%, #00FF88 14%, #00D4FF 28%, #0088FF 42%, #9D4EDD 56%, #FF006E 70%, #FF4500 84%, #FFEA00 100%)",
+                  boxShadow: "0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(157, 78, 221, 0.5), inset 0 0 30px rgba(255, 69, 0, 0.4)",
+                }}
               />
+
+              {/* Secondary Rotating Glow */}
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: "conic-gradient(from 0deg, #FFEA00 0%, #FF4500 16%, #FF006E 32%, #9D4EDD 48%, #0088FF 64%, #00D4FF 80%, #00FF88 100%)",
+                  filter: "blur(15px)",
+                  opacity: 0.6,
+                }}
+              />
+
+              {/* Profile Image */}
+              <motion.div
+                whileHover={{ scale: 1.06 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                className="relative w-60 h-60 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-2xl z-10"
+              >
+                <img
+                  src={profileImage}
+                  alt="Robert Murungi"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </motion.div>
+
+              {/* Floating Badges */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute -top-4 -right-4 px-4 py-2 rounded-xl glass-effect border shadow-lg"
+              >
+                🚀 Available
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                className="absolute -bottom-4 -left-4 px-4 py-2 rounded-xl glass-effect border shadow-lg"
+              >
+                ⚡ Fast Delivery
+              </motion.div>
             </div>
           </motion.div>
         </div>
 
-        {/* MOBILE CTA */}
+        {/* CTA Buttons - Mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
           className="flex flex-wrap gap-4 justify-center pt-8 lg:hidden"
         >
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary">
             <Link to="/projects">
-              View My Work <ArrowRight className="ml-2 h-4 w-4" />
+              View My Work
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
 
           <Button asChild variant="outline" size="lg">
             <Link to="/contact">
-              Get In Touch <Mail className="ml-2 h-4 w-4" />
+              Get In Touch
+              <Mail className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </motion.div>
 
-        {/* SOCIAL ICONS */}
+        {/* ✅ FIXED SOCIAL LINKS BLOCK */}
         <motion.div
-          className="flex justify-center gap-4 mt-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
+          className="flex justify-center gap-4 mt-6"
         >
-          <a href="https://github.com/robaadekings" target="_blank" rel="noreferrer">
+          <a href="https://github.com/robaadekings" target="_blank" rel="noopener noreferrer">
             <Github />
           </a>
-          <a href="https://linkedin.com/in/robert-murangiri-40ab24392" target="_blank" rel="noreferrer">
+          <a href="https://linkedin.com/in/robert-murangiri-40ab24392" target="_blank" rel="noopener noreferrer">
             <Linkedin />
           </a>
           <a href="mailto:robertmurangiri63@gmail.com">
             <Mail />
           </a>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="text-center mt-16"
+        >
+          <p className="text-sm text-muted-foreground">Scroll to explore</p>
         </motion.div>
       </div>
     </motion.section>
@@ -110,15 +182,15 @@ const Home = () => {
 
 export default Home
 
-function AnimatedWords({ words, nameIndexes }) {
+function AnimatedWords({ words = [], nameIndexes = [] }) {
   return (
-    <span className="inline-flex gap-2 flex-wrap">
+    <span className="inline-flex flex-wrap gap-2 items-center">
       {words.map((word, i) => (
         <motion.span
           key={i}
-          className={nameIndexes.includes(i) ? "gradient-text font-bold" : ""}
           animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
+          transition={{ duration: 3, repeat: Infinity, delay: i * 0.12 }}
+          className={nameIndexes.includes(i) ? "gradient-text font-extrabold" : ""}
         >
           {word}
         </motion.span>
