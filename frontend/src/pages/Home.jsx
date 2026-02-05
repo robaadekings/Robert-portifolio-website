@@ -14,9 +14,9 @@ const Home = () => {
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "4s" }} />
+        <div className="hidden sm:block absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
+        <div className="hidden sm:block absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="hidden md:block absolute top-1/2 left-1/2 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "4s" }} />
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -38,7 +38,7 @@ const Home = () => {
               <span className="text-sm font-medium">Available for Freelance</span>
             </motion.div>
 
-            <motion.h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
               <AnimatedWords
                 words={["Hi,", "I'm", "Robert", "Murungi"]}
                 nameIndexes={[2, 3]}
@@ -122,7 +122,7 @@ const Home = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex justify-center lg:justify-end items-center"
           >
-            <div className="relative flex items-center justify-center w-96 h-96 md:w-[28rem] md:h-[28rem]">
+            <div className="relative flex items-center justify-center w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem]">
               {/* Main Animated Rotating Circle Border */}
               <motion.div
                 animate={{ rotate: 360 }}
@@ -149,9 +149,9 @@ const Home = () => {
 
               {/* Profile Image Container - Centered */}
               <motion.div
-                whileHover={{ scale: 1.08 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="absolute w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl z-10 flex items-center justify-center"
+                whileHover={{ scale: 1.06 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                className="absolute w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-full overflow-hidden shadow-2xl z-10 flex items-center justify-center"
                 style={{
                   border: "1px solid rgba(255, 255, 255, 0.3)",
                   boxShadow: "0 0 30px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.1)",

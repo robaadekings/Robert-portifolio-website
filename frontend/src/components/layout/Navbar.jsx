@@ -51,7 +51,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation - Hidden on mobile and tablet */}
-          <div className="hidden 2xl:flex gap-2 items-center">
+          <div className="hidden md:flex gap-2 items-center">
             {navLinks.map((link) => {
               const Icon = link.icon
               return (
@@ -149,7 +149,7 @@ const Navbar = () => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="2xl:hidden p-2 md:p-2.5 text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-slate-800/50"
+              className="md:hidden p-2 md:p-2.5 text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-slate-800/50"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -162,7 +162,7 @@ const Navbar = () => {
           initial={false}
           animate={{ height: mobileMenuOpen ? "auto" : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="2xl:hidden overflow-hidden"
+          className="md:hidden overflow-hidden"
         >
           {mobileMenuOpen && (
             <motion.div

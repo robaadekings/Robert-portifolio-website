@@ -43,24 +43,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap gap-3 justify-center mb-12"
-        >
-          {categories.slice(0, 8).map((category) => (
-            <Button
-              key={category}
-              variant={filter === category ? "default" : "outline"}
-              onClick={() => setFilter(category)}
-              className={filter === category ? "bg-gradient-to-r from-primary to-secondary" : ""}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </Button>
-          ))}
-        </motion.div>
+        {/* Filter Buttons removed: tech filters now appear only inside project cards */}
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -78,7 +61,7 @@ const Projects = () => {
                     <img
                       src={project.images?.[0] || "/placeholder.png"}
                       alt={project.title}
-                      className="h-56 w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="h-44 sm:h-56 w-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 gap-2">
                       {project.liveUrl && (

@@ -33,8 +33,8 @@ const Footer = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 py-16 relative">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="max-w-7xl mx-auto px-6 py-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Branding */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
@@ -57,6 +57,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center group"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">
@@ -97,7 +98,7 @@ const Footer = () => {
         <div className="border-t border-border/50 mb-8" />
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-4">
           <p className="text-sm text-muted-foreground flex items-center gap-2">
             © {new Date().getFullYear()} Robert Murungi. Made with
             <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
