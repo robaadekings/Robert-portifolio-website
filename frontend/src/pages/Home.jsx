@@ -58,27 +58,6 @@ const Home = () => {
               I craft beautiful, scalable web applications and create stunning
               visual designs that bring ideas to life. Let's build something amazing together.
             </p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4"
-            >
-              <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg">
-                <Link to="/projects">
-                  View My Work
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="group border-2">
-                <Link to="/contact">
-                  Get In Touch
-                  <Mail className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </motion.div>
           </motion.div>
 
           {/* Right Side - Profile Image (appears after text on mobile) */}
@@ -88,7 +67,7 @@ const Home = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex justify-center lg:justify-end items-center w-full"
           >
-            <div className="relative flex items-center justify-center w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] p-3">
+            <div className="relative flex items-center justify-center w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] p-3">
               {/* Main Animated Rotating Circle Border */}
               <motion.div
                 animate={{ rotate: 360 }}
@@ -117,7 +96,7 @@ const Home = () => {
               <motion.div
                 whileHover={{ scale: 1.06 }}
                 transition={{ type: "spring", stiffness: 200 }}
-                className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-2xl z-10 flex items-center justify-center"
+                className="relative w-60 h-60 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-2xl z-10 flex items-center justify-center"
                 style={{
                   border: "1px solid rgba(255, 255, 255, 0.3)",
                   boxShadow: "0 0 30px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.1)",
@@ -150,12 +129,26 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* Social Links - Below Profile Image on Mobile */}
+        {/* CTA Buttons - Below Profile Image on Mobile */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="flex gap-4 justify-center pt-8 lg:hidden"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap gap-4 justify-center pt-8 lg:hidden"
+        >
+          <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg">
+            <Link to="/projects">
+              View My Work
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="group border-2">
+            <Link to="/contact">
+              Get In Touch
+              <Mail className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </motion.div>
         >
           <a
             href="https://github.com/robaadekings"
