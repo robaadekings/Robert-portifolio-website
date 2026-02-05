@@ -25,35 +25,33 @@ const Projects = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen pt-24 pb-16"
+      className="min-h-screen pt-20 pb-16"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             My <span className="gradient-text">Projects</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
             A showcase of my recent work and creative projects
           </p>
         </motion.div>
 
-        {/* Filter Buttons removed: tech filters now appear only inside project cards */}
-
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project._id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index }}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: 0, scale: 1.02 }}
             >
               <Card className="h-full group border-2 hover:border-primary/50 transition-all overflow-hidden">
                 <CardHeader className="p-0">
@@ -61,9 +59,9 @@ const Projects = () => {
                     <img
                       src={project.images?.[0] || "/placeholder.png"}
                       alt={project.title}
-                      className="h-44 sm:h-56 w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="h-44 sm:h-56 md:h-64 w-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 gap-2">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-2 p-2 sm:p-4">
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
@@ -71,7 +69,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Button size="sm" variant="secondary" className="gap-2">
+                          <Button size="sm" variant="secondary" className="gap-2 w-full sm:w-auto">
                             <ExternalLink className="w-4 h-4" />
                             Live Demo
                           </Button>
@@ -84,7 +82,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Button size="sm" variant="secondary" className="gap-2">
+                          <Button size="sm" variant="secondary" className="gap-2 w-full sm:w-auto">
                             <Github className="w-4 h-4" />
                             Code
                           </Button>
@@ -93,21 +91,21 @@ const Projects = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 line-clamp-2">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                     {project.techStack?.slice(0, 3).map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
+                      <Badge key={tech} variant="secondary" className="text-xs sm:text-sm">
                         {tech}
                       </Badge>
                     ))}
                     {project.techStack?.length > 3 && (
-                      <Badge variant="outline" className="text-xs">
+                      <Badge variant="outline" className="text-xs sm:text-sm">
                         +{project.techStack.length - 3} more
                       </Badge>
                     )}
@@ -129,10 +127,10 @@ const Projects = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-20"
+            className="text-center py-16 sm:py-20"
           >
-            <p className="text-2xl text-muted-foreground">No projects found</p>
-            <p className="text-muted-foreground mt-2">Try selecting a different filter</p>
+            <p className="text-xl sm:text-2xl text-muted-foreground">No projects found</p>
+            <p className="text-sm sm:text-base text-muted-foreground mt-2">Try selecting a different filter</p>
           </motion.div>
         )}
       </div>

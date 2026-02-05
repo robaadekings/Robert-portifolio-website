@@ -45,7 +45,7 @@ const ProjectDetails = () => {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
           transition={{ type: "spring", damping: 25 }}
-          className="bg-background max-w-5xl w-full rounded-2xl shadow-2xl relative my-8"
+          className="bg-background w-full max-w-5xl rounded-2xl shadow-2xl relative my-8"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -57,12 +57,13 @@ const ProjectDetails = () => {
             <X className="w-5 h-5" />
           </Button>
 
-          <div className="grid lg:grid-cols-2 gap-8 p-8">
+          {/* Main Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 p-4 sm:p-6 lg:p-8">
             {/* Left Side - Images */}
             <div className="space-y-4">
               {/* Main Image */}
               <div className="relative group">
-                <div className="relative h-96 rounded-xl overflow-hidden border-2 border-border">
+                <div className="relative h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden border-2 border-border">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImageIndex}
@@ -82,25 +83,25 @@ const ProjectDetails = () => {
                       <Button
                         variant="secondary"
                         size="sm"
-                        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full w-10 h-10 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 rounded-full w-8 h-8 sm:w-10 sm:h-10 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                         onClick={prevImage}
                       >
-                        <ChevronLeft className="w-5 h-5" />
+                        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                       </Button>
                       <Button
                         variant="secondary"
                         size="sm"
-                        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full w-10 h-10 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 rounded-full w-8 h-8 sm:w-10 sm:h-10 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                         onClick={nextImage}
                       >
-                        <ChevronRight className="w-5 h-5" />
+                        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                       </Button>
                     </>
                   )}
 
                   {/* Image Counter */}
                   {project.images.length > 1 && (
-                    <div className="absolute bottom-4 right-4 px-3 py-1 rounded-full glass-effect border text-sm font-medium">
+                    <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 px-2 sm:px-3 py-1 rounded-full glass-effect border text-xs sm:text-sm font-medium">
                       {currentImageIndex + 1} / {project.images.length}
                     </div>
                   )}
@@ -109,12 +110,12 @@ const ProjectDetails = () => {
 
               {/* Thumbnail Strip */}
               {project.images.length > 1 && (
-                <div className="flex gap-3 overflow-x-auto pb-2">
+                <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2">
                   {project.images.map((image, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`flex-shrink-0 w-24 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                      className={`flex-shrink-0 w-16 sm:w-24 h-12 sm:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                         currentImageIndex === index
                           ? "border-primary ring-2 ring-primary/20"
                           : "border-border hover:border-primary/50"
@@ -132,21 +133,21 @@ const ProjectDetails = () => {
             </div>
 
             {/* Right Side - Details */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div>
-                <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-                
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">{project.title}</h1>
+
                 {project.createdAt && (
-                  <div className="flex items-center gap-4 text-muted-foreground mb-4 flex-wrap">
+                  <div className="flex items-center gap-3 sm:gap-4 text-muted-foreground mb-3 sm:mb-4 flex-wrap">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
-                      <span className="text-sm">
+                      <span className="text-sm sm:text-base">
                         Created: {new Date(project.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </span>
                     </div>
                     {project.featured && (
                       <div className="px-3 py-1 rounded-full bg-yellow-500/20 border border-yellow-500/50">
-                        <span className="text-xs font-semibold text-yellow-500">⭐ Featured</span>
+                        <span className="text-xs sm:text-sm font-semibold text-yellow-500">⭐ Featured</span>
                       </div>
                     )}
                   </div>
@@ -155,9 +156,9 @@ const ProjectDetails = () => {
 
               {/* Description */}
               <Card className="border-2">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-3">Project Description</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Project Description</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     {project.description || "No description provided"}
                   </p>
                 </CardContent>
@@ -165,8 +166,8 @@ const ProjectDetails = () => {
 
               {/* Tech Stack */}
               <Card className="border-2">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4">Technologies Used</h3>
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Technologies Used</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.techStack && project.techStack.length > 0 ? (
                       project.techStack.map((tech) => (
@@ -175,7 +176,7 @@ const ProjectDetails = () => {
                         </Badge>
                       ))
                     ) : (
-                      <p className="text-muted-foreground text-sm">No technologies specified</p>
+                      <p className="text-sm text-muted-foreground">No technologies specified</p>
                     )}
                   </div>
                 </CardContent>
@@ -183,14 +184,14 @@ const ProjectDetails = () => {
 
               {/* Links Section */}
               <Card className="border-2">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4">Project Links</h3>
-                  <div className="space-y-3">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Project Links</h3>
+                  <div className="space-y-2 sm:space-y-3">
                     {project.liveUrl ? (
-                      <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
-                        <div>
+                      <div className="flex items-center justify-between p-2 sm:p-3 bg-muted rounded-lg">
+                        <div className="truncate">
                           <p className="text-sm font-medium">Live Demo</p>
-                          <p className="text-xs text-muted-foreground truncate">{project.liveUrl}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground truncate">{project.liveUrl}</p>
                         </div>
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="ml-2">
                           <Button size="sm" variant="secondary" className="gap-2">
@@ -202,12 +203,12 @@ const ProjectDetails = () => {
                     ) : (
                       <p className="text-sm text-muted-foreground">No live demo URL</p>
                     )}
-                    
+
                     {project.githubUrl ? (
-                      <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
-                        <div>
+                      <div className="flex items-center justify-between p-2 sm:p-3 bg-muted rounded-lg">
+                        <div className="truncate">
                           <p className="text-sm font-medium">GitHub Repository</p>
-                          <p className="text-xs text-muted-foreground truncate">{project.githubUrl}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground truncate">{project.githubUrl}</p>
                         </div>
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="ml-2">
                           <Button size="sm" variant="secondary" className="gap-2">
@@ -224,17 +225,13 @@ const ProjectDetails = () => {
               </Card>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-3 pt-2 sm:pt-4">
                 {project.liveUrl && (
                   <Button
                     asChild
-                    className="flex-1 bg-gradient-to-r from-primary to-secondary hover:opacity-90"
+                    className="flex-1 sm:flex-none bg-gradient-to-r from-primary to-secondary hover:opacity-90"
                   >
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       View Live Demo
                     </a>
@@ -244,13 +241,9 @@ const ProjectDetails = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="flex-1 border-2"
+                    className="flex-1 sm:flex-none border-2"
                   >
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4 mr-2" />
                       View Code
                     </a>
@@ -263,9 +256,9 @@ const ProjectDetails = () => {
                 <div className="space-y-4">
                   {project.features && (
                     <Card className="border-2">
-                      <CardContent className="p-6">
-                        <h3 className="text-lg font-semibold mb-3">Key Features</h3>
-                        <ul className="space-y-2 text-muted-foreground">
+                      <CardContent className="p-4 sm:p-6">
+                        <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Key Features</h3>
+                        <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                           {project.features.map((feature, index) => (
                             <li key={index} className="flex items-start gap-2">
                               <span className="text-primary mt-1">•</span>
