@@ -153,30 +153,7 @@ const Login = () => {
                 </Button>
               </form>
 
-              {/* Default Credentials Info */}
-              <div className="pt-4 border-t">
-                <div className="p-4 rounded-lg bg-muted/50 space-y-2">
-                  <p className="text-sm font-medium flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-primary" />
-                    Default Credentials:
-                  </p>
-                  <div className="text-sm text-muted-foreground space-y-1">
-                    <p className="font-mono">Email: admin@portfolio.com</p>
-                    <p className="font-mono">Password: admin123</p>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-2">
-                    Please change these credentials after first login
-                  </p>
-                  <div className="mt-3 text-center">
-                    <Link to="/register-admin" className="text-sm text-primary hover:underline">Register as Admin</Link>
-                  </div>
-                </div>
-              </div>
 
-              {/* Footer */}
-              <div className="text-center text-xs text-muted-foreground pt-2">
-                <p>Protected area for site administrators only</p>
-              </div>
             </CardContent>
           </Card>
         </motion.div>
