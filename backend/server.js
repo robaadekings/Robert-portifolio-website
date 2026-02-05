@@ -10,9 +10,17 @@ const messageRoutes = require("./routes/messageRoutes");
 
 const app = express();
 
-const allowedOrigins = process.env.FRONTEND_URL
-  ? process.env.FRONTEND_URL.split(',').map((url) => url.trim())
-  : ["http://localhost:5173", "http://localhost:3000"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://robert-portifolio-website.vercel.app",
+];
+
+if (process.env.FRONTEND_URL) {
+  process.env.FRONTEND_URL.split(',').forEach((url) => {
+    allowedOrigins.push(url.trim());
+  });
+}
 
 app.use(
   cors({
