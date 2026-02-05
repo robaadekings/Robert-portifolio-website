@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Github, Linkedin, Mail, Sparkles } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
 import profileImage from "@/assets/profile.jpg"
 
 const Home = () => {
@@ -28,7 +28,7 @@ const Home = () => {
       <div className="max-w-6xl mx-auto w-full">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-center">
           
-          {/* RIGHT SIDE – PROFILE IMAGE (FIRST ON MOBILE) */}
+          {/* PROFILE IMAGE – FIRST ON MOBILE */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -37,7 +37,7 @@ const Home = () => {
           >
             <div className="relative flex items-center justify-center w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] p-3">
               
-              {/* Main Animated Rotating Circle Border */}
+              {/* Main Rotating Circle */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -46,11 +46,11 @@ const Home = () => {
                   background:
                     "conic-gradient(from 0deg, #00FFFF 0%, #00FF88 14%, #00D4FF 28%, #0088FF 42%, #9D4EDD 56%, #FF006E 70%, #FF4500 84%, #FFEA00 100%)",
                   boxShadow:
-                    "0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(157, 78, 221, 0.5), inset 0 0 30px rgba(255, 69, 0, 0.4)",
+                    "0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(157, 78, 221, 0.5)",
                 }}
               />
 
-              {/* Secondary Rotating Glow */}
+              {/* Secondary Glow */}
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -95,23 +95,13 @@ const Home = () => {
             </div>
           </motion.div>
 
-          {/* LEFT SIDE – TEXT CONTENT (SECOND ON MOBILE) */}
+          {/* TEXT CONTENT – SECOND ON MOBILE */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="space-y-6 text-center lg:text-left w-full order-2 lg:order-1"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border mx-auto lg:mx-0"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">Available for Freelance</span>
-            </motion.div>
-
             <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
               <AnimatedWords
                 words={["Hi,", "I'm", "Robert", "Murungi"]}
