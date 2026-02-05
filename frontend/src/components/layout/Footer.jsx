@@ -99,10 +99,10 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-4">
-          <p className="text-sm text-muted-foreground flex items-center gap-2">
-            © {new Date().getFullYear()} Robert Murungi. Made with
-            <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
-            All rights reserved.
+          <p className="text-xs sm:text-sm text-muted-foreground flex flex-wrap items-center justify-center md:justify-start gap-1 md:gap-2">
+            <span>© {new Date().getFullYear()} Robert Murungi.</span>
+            <span className="flex items-center gap-1 md:gap-2">Made with <Heart className="w-3 h-3 md:w-4 md:h-4 text-red-500 fill-red-500 animate-pulse" /></span>
+            <span>All rights reserved.</span>
           </p>
 
           {/* Scroll to Top */}
@@ -110,7 +110,7 @@ const Footer = () => {
             variant="outline"
             size="sm"
             onClick={scrollToTop}
-            className="group border-2"
+            className="group border-2 w-full md:w-auto"
           >
             Back to Top
             <ArrowUp className="w-4 h-4 ml-2 group-hover:-translate-y-1 transition-transform" />
