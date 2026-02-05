@@ -20,13 +20,73 @@ const Home = () => {
       </div>
 
       <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center order-2 lg:order-1">
-          {/* Right Side - Profile Image (appears first on mobile) */}
+        <div className="flex lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-start flex-col lg:items-center">
+          {/* Left Side - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="space-y-6 text-center lg:text-left w-full"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border"
+            >
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium">Available for Freelance</span>
+            </motion.div>
+
+            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+              <AnimatedWords
+                words={["Hi,", "I'm", "Robert", "Murungi"]}
+                nameIndexes={[2, 3]}
+              />
+            </motion.h1>
+            
+            <div className="space-y-3">
+              <p className="text-2xl md:text-3xl font-semibold text-foreground/90">
+                Fullstack MERN Developer
+              </p>
+              <p className="text-xl md:text-2xl font-semibold text-foreground/80">
+                & Graphic Designer
+              </p>
+            </div>
+
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              I craft beautiful, scalable web applications and create stunning
+              visual designs that bring ideas to life. Let's build something amazing together.
+            </p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4"
+            >
+              <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg">
+                <Link to="/projects">
+                  View My Work
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="group border-2">
+                <Link to="/contact">
+                  Get In Touch
+                  <Mail className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Side - Profile Image (appears after text on mobile) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex justify-center lg:justify-end items-center order-1 lg:order-2"
+            className="flex justify-center lg:justify-end items-center w-full"
           >
             <div className="relative flex items-center justify-center w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] p-3">
               {/* Main Animated Rotating Circle Border */}
@@ -88,66 +148,6 @@ const Home = () => {
               </motion.div>
             </div>
           </motion.div>
-
-          {/* Left Side - Text Content (appears second on mobile) */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="space-y-6 text-center lg:text-left order-2 lg:order-1"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">Available for Freelance</span>
-            </motion.div>
-
-            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-              <AnimatedWords
-                words={["Hi,", "I'm", "Robert", "Murungi"]}
-                nameIndexes={[2, 3]}
-              />
-            </motion.h1>
-            
-            <div className="space-y-3">
-              <p className="text-2xl md:text-3xl font-semibold text-foreground/90">
-                Fullstack MERN Developer
-              </p>
-              <p className="text-xl md:text-2xl font-semibold text-foreground/80">
-                & Graphic Designer
-              </p>
-            </div>
-
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              I craft beautiful, scalable web applications and create stunning
-              visual designs that bring ideas to life. Let's build something amazing together.
-            </p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4"
-            >
-              <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg">
-                <Link to="/projects">
-                  View My Work
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="group border-2">
-                <Link to="/contact">
-                  Get In Touch
-                  <Mail className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </motion.div>
-          </motion.div>
         </div>
 
         {/* Social Links - Below Profile Image on Mobile */}
@@ -155,7 +155,7 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="flex gap-4 justify-center pt-8 lg:pt-4 lg:hidden"
+          className="flex gap-4 justify-center pt-8 lg:hidden"
         >
           <a
             href="https://github.com/robaadekings"
