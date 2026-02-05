@@ -35,13 +35,14 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-12 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          
           {/* Branding */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
               <h3 className="text-2xl font-bold gradient-text">Robert Murungi</h3>
             </Link>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              Fullstack MERN Developer & Graphic Designer crafting beautiful, 
+              Fullstack MERN Developer & Graphic Designer crafting beautiful,
               scalable web applications and stunning visual designs.
             </p>
             <p className="text-sm text-muted-foreground">
@@ -49,48 +50,53 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4 text-lg">Quick Links</h4>
-            <ul className="space-y-3">
-              {footerLinks.navigation.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                    className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform">
-                      {link.label}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Connect */}
-          <div>
-            <h4 className="font-semibold mb-4 text-lg">Connect</h4>
-            <div className="flex flex-col gap-4">
-              {footerLinks.social.map((social) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target={social.href.startsWith("http") ? "_blank" : undefined}
-                    rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-all group"
-                  >
-                    <div className="w-10 h-10 rounded-lg glass-effect border flex items-center justify-center group-hover:border-primary group-hover:scale-110 transition-all">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span>{social.label}</span>
-                  </a>
-                )
-              })}
+          {/* Quick Links + Connect (mobile side-by-side) */}
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-2">
+            
+            {/* Quick Links */}
+            <div>
+              <h4 className="font-semibold mb-4 text-lg">Quick Links</h4>
+              <ul className="space-y-3">
+                {footerLinks.navigation.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                      className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center group"
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform">
+                        {link.label}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* Connect */}
+            <div>
+              <h4 className="font-semibold mb-4 text-lg">Connect</h4>
+              <div className="flex flex-col gap-4">
+                {footerLinks.social.map((social) => {
+                  const Icon = social.icon
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target={social.href.startsWith("http") ? "_blank" : undefined}
+                      rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-all group"
+                    >
+                      <div className="w-10 h-10 rounded-lg glass-effect border flex items-center justify-center group-hover:border-primary group-hover:scale-110 transition-all">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span>{social.label}</span>
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -101,7 +107,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-4">
           <p className="text-xs sm:text-sm text-muted-foreground flex flex-wrap items-center justify-center md:justify-start gap-1 md:gap-2">
             <span>© {new Date().getFullYear()} Robert Murungi.</span>
-            <span className="flex items-center gap-1 md:gap-2">Made with <Heart className="w-3 h-3 md:w-4 md:h-4 text-red-500 fill-red-500 animate-pulse" /></span>
+            <span className="flex items-center gap-1 md:gap-2">
+              Made with <Heart className="w-3 h-3 md:w-4 md:h-4 text-red-500 fill-red-500 animate-pulse" />
+            </span>
             <span>All rights reserved.</span>
           </p>
 
