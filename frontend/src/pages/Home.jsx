@@ -122,12 +122,12 @@ const Home = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex justify-center lg:justify-end items-center"
           >
-            <div className="relative flex items-center justify-center w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem]">
+            <div className="relative flex items-center justify-center w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] p-3">
               {/* Main Animated Rotating Circle Border */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full"
+                className="absolute top-0 left-0 right-0 bottom-0 rounded-full"
                 style={{
                   background: "conic-gradient(from 0deg, #00FFFF 0%, #00FF88 14%, #00D4FF 28%, #0088FF 42%, #9D4EDD 56%, #FF006E 70%, #FF4500 84%, #FFEA00 100%)",
                   boxShadow: "0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(157, 78, 221, 0.5), inset 0 0 30px rgba(255, 69, 0, 0.4)",
@@ -138,7 +138,7 @@ const Home = () => {
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full"
+                className="absolute top-0 left-0 right-0 bottom-0 rounded-full"
                 style={{
                   background: "conic-gradient(from 0deg, #FFEA00 0%, #FF4500 16%, #FF006E 32%, #9D4EDD 48%, #0088FF 64%, #00D4FF 80%, #00FF88 100%)",
                   filter: "blur(15px)",
@@ -151,7 +151,7 @@ const Home = () => {
               <motion.div
                 whileHover={{ scale: 1.06 }}
                 transition={{ type: "spring", stiffness: 200 }}
-                className="absolute w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-full overflow-hidden shadow-2xl z-10 flex items-center justify-center"
+                className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-2xl z-10 flex items-center justify-center"
                 style={{
                   border: "1px solid rgba(255, 255, 255, 0.3)",
                   boxShadow: "0 0 30px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.1)",
