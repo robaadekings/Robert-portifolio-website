@@ -23,7 +23,7 @@ const About = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen pt-24 pb-16"
+      className="min-h-screen pt-23 pb-16"
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
@@ -115,7 +115,7 @@ const About = () => {
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Frontend */}
-            <Card className="border-2 hover:border-primary/50 transition-all">
+            <Card className="border-2 hover:border-primary/49 transition-all">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
